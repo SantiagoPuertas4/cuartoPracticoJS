@@ -38,6 +38,8 @@ const auto2 = new Auto("Blanco", "Toyota", "Etios XLS", true);
 
 auto1.apagarAuto();
 auto1.encenderAuto();
+console.log(auto1);
 
 auto2.encenderAuto();
 auto2.apagarAuto();
+console.log(auto2);
