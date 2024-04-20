@@ -15,3 +15,11 @@ class Persona {
     alert(`${this.nombre} se despide`);
   }
 }
+
+const persona1 = new Persona("Santi", 19, "Estudiante");
+const persona2 = new Persona("Tobias", 20, "Estudiante");
+
+persona1.saludar();
+persona1.despedir();
+persona2.saludar();
+persona2.despedir();
