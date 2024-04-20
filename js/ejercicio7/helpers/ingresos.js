@@ -54,7 +54,6 @@ export function ingresoTexto(msg) {
   } while (true);
 
   texto = texto.trim();
-  texto = trimInterno(texto);
 
   return texto;
 }

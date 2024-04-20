@@ -44,6 +44,18 @@ function agregarContactos() {
   } while (true);
 }
 
+function buscarContacto() {
+  let contactoABuscar = ingresoTexto("Ingrese el nombre del contacto a buscar");
+  agenda.buscarContacto(contactoABuscar);
+}
+
+function eliminarContacto() {
+  let contactoAEliminar = ingresoTexto(
+    "Ingrese el nombre del contacto a eliminar"
+  );
+  agenda.eliminarContacto(contactoAEliminar);
+}
+
 let salir = false;
 let tamanioAgenda = 0;
 
@@ -66,14 +78,19 @@ do {
     case 2:
       break;
     case 3:
+      agenda.listarContactos();
       break;
     case 4:
+      buscarContacto();
       break;
     case 5:
+      eliminarContacto();
       break;
     case 6:
+      agenda.agendaLlena();
       break;
     case 7:
+      agenda.huecosLibres();
       break;
     case 8:
       salir = true;
@@ -83,30 +100,3 @@ do {
       break;
   }
 } while (salir === false);
-
-// const persona1 = new Contacto("Santiago", 3816713466);
-// const persona2 = new Contacto("Eze", 3815038570);
-
-// const agenda = new Agenda(3);
-
-// agenda.aniadirContacto(persona1);
-// agenda.aniadirContacto(persona2);
-
-// agenda.listarContactos();
-
-// agenda.buscarContacto("Santiago");
-// agenda.buscarContacto("Eze");
-// agenda.buscarContacto("Santi");
-
-// agenda.agendaLlena();
-// agenda.huecosLibres();
-// agenda.existeContacto("Eze");
-
-// const persona3 = new Contacto("Tobias", 3815038570);
-// agenda.aniadirContacto(persona3);
-// agenda.agendaLlena();
-// agenda.huecosLibres();
-// agenda.existeContacto("Ezequiel");
-
-// agenda.eliminarContacto("Tobias");
-// agenda.existeContacto("Tobias");

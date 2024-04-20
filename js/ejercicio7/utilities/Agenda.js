@@ -47,10 +47,10 @@ export class Agenda {
     let existe = false;
     let puntero = 0;
     let i = 0;
+    let contactoAgenda = "";
     for (i = 0; i < this.contactos.length; i++) {
-      if (
-        this.contactos[i].nombre.toLowerCase() === contactoBuscado.toLowerCase()
-      ) {
+      contactoAgenda = this.contactos[i].nombre;
+      if (contactoAgenda.toLowerCase() === contactoBuscado.toLowerCase()) {
         existe = true;
         puntero = i;
         break;
