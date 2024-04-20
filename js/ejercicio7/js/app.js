@@ -17,61 +17,53 @@ Los métodos de la agenda serán los siguientes:
 Crea un menú con opciones que serán seleccionadas por el usuario usando un prompt, las salidas de las operaciones seleccionadas por el usuario se pueden mostrar en pantalla y  por consola.
  */
 import { Agenda } from "../utilities/Agenda.js";
-import { Contacto } from "../utilities/Contacto.js";
-
-function crearAgenda() {
-  let tamanioAgenda = 0;
-  if (!agendaCreada) {
-    do {
-      tamanioAgenda = prompt("Ingresa el tamaño de la agenda");
-
-      if (tamanioAgenda === null) {
-        alert("No ingreso nada");
-      } else if (isNaN(tamanioAgenda)) {
-        alert("No ingreso un numero");
-      } else {
-        break;
-      }
-    } while (true);
-
-    const agenda = new Agenda(tamanioAgenda);
-    agendaCreada = true;
-  } else {
-    alert("Agenda ya creada");
-  }
-}
+import { ingresoNumero } from "../helpers/ingresos.js";
+import { ingresoTexto } from "../helpers/ingresos.js";
 
 function agregarContactos() {
+  let contactoAgredado = "";
+  let numeroContacto = 0;
+  let i = 0;
+
   do {
-    let contactoAgredado = "";
-    let numeroContacto = 0;
-    let i = false;
+    contactoAgredado = ingresoTexto("Ingrese el nombre del contacto");
+    numeroContacto = ingresoNumero(`Ingrese el numero de ${contactoAgredado}`);
 
-    contactoAgredado = prompt(`Ingresa el nombre del contacto`);
-    numeroContacto = prompt(`Ingresa el numero de ${contactoAgredado}`);
+    agenda.aniadirContacto(contactoAgredado, numeroContacto);
 
-    agenda.agregarContactos(contactoAgredado, numeroContacto);
+    i = ingresoNumero(
+      `Desea seguir agregando contactos? 1 = Si, 2 = No`,
+      1,
+      1,
+      2
+    );
+
+    if (i == 2) {
+      break;
+    }
   } while (true);
 }
 
 let salir = false;
-let agendaCreada = false;
+let tamanioAgenda = 0;
+
+tamanioAgenda = ingresoNumero("Ingrese el tamaño de la agenda");
+const agenda = new Agenda(tamanioAgenda);
 
 do {
   let opcion = 0;
 
   opcion = Number(
     prompt(
-      `1. Crear agenda \n2. Añadir contactos \n3. Existe contacto \n4. Listar agenda \n5. Buscar contacto \n6. Eliminar contacto \n7. Agenda llena \n8. Huecos libres \n9. Salir`
+      `1. Añadir contactos \n2. Existe contacto \n3. Listar agenda \n4. Buscar contacto \n5. Eliminar contacto \n6. Agenda llena \n7. Huecos libres \n8. Salir`
     )
   );
 
   switch (opcion) {
     case 1:
-      crearAgenda();
+      agregarContactos();
       break;
     case 2:
-      agregarContactos();
       break;
     case 3:
       break;
@@ -84,8 +76,6 @@ do {
     case 7:
       break;
     case 8:
-      break;
-    case 9:
       salir = true;
       break;
     default:

@@ -1,12 +1,15 @@
+import { Contacto } from "../utilities/Contacto.js";
+
 export class Agenda {
   constructor(tamanio = 10) {
     this.tamanio = tamanio;
     this.contactos = [];
   }
 
-  aniadirContacto(contacto) {
+  aniadirContacto(contacto, numero) {
     if (this.contactos.length < this.tamanio) {
-      this.contactos.push(contacto);
+      const contact = new Contacto(contacto, numero);
+      this.contactos.push(contact);
       alert(`Se añadio a ${this.contactos[this.contactos.length - 1].nombre}`);
     } else {
       alert(`La agenda no puede almacenas mas contactos`);
