@@ -19,7 +19,13 @@ class Cuenta {
   }
 
   extraerDinero(saldoExtraido) {
-    this.saldo = this.saldo - saldoExtraido;
+    if (saldoExtraido > this.saldo) {
+      console.log(
+        `La cuenta no dispone del dinero suficiente para extraer esa cantidad`
+      );
+    } else {
+      this.saldo = this.saldo - saldoExtraido;
+    }
   }
 
   informarEstado() {
@@ -34,4 +40,5 @@ const cuentaAlex = new Cuenta("Alex");
 cuentaAlex.informarEstado();
 cuentaAlex.ingresarDinero(10000);
 cuentaAlex.extraerDinero(2000);
+cuentaAlex.extraerDinero(10000);
 cuentaAlex.informarEstado();
